@@ -1,0 +1,59 @@
+import yfinance as yf
+
+# Fetch Tesla stock data
+tesla = yf.Ticker('TSLA')
+tesla_data = tesla.history(period="1y")  # For the last 1 year
+tesla_data.head()
+import requests
+from bs4 import BeautifulSoup
+
+# Get Tesla's revenue data from a financial page
+url = "https://www.macrotrends.net/stocks/charts/TSLA/tesla/revenue"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Extract revenue data
+revenue_data = soup.find_all('td', {'class': 'historical_data_table'})
+revenue = [x.text for x in revenue_data]
+print(revenue)
+# Fetch GameStop stock data
+gamestop = yf.Ticker('GME')
+gamestop_data = gamestop.history(period="1y")  # For the last 1 year
+gamestop_data.head()
+# Get GameStop's revenue data
+url = "https://www.macrotrends.net/stocks/charts/GME/gamestop/revenue"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Extract revenue data
+revenue_data = soup.find_all('td', {'class': 'historical_data_table'})
+revenue = [x.text for x in revenue_data]
+print(revenue)
+import matplotlib.pyplot as plt
+
+# Plot Tesla stock data vs revenue
+fig, ax1 = plt.subplots()
+
+ax1.set_xlabel('Date')
+ax1.set_ylabel('Stock Price', color='tab:blue')
+ax1.plot(tesla_data.index, tesla_data['Close'], color='tab:blue')
+
+ax2 = ax1.twinx()
+ax2.set_ylabel('Revenue', color='tab:green')
+ax2.plot(tesla_data.index, revenue[:len(tesla_data)], color='tab:green')
+
+plt.title('Tesla Stock Price vs Revenue')
+plt.show()
+# Plot GameStop stock data vs revenue
+fig, ax1 = plt.subplots()
+
+ax1.set_xlabel('Date')
+ax1.set_ylabel('Stock Price', color='tab:blue')
+ax1.plot(gamestop_data.index, gamestop_data['Close'], color='tab:blue')
+
+ax2 = ax1.twinx()
+ax2.set_ylabel('Revenue', color='tab:green')
+ax2.plot(gamestop_data.index, revenue[:len(gamestop_data)], color='tab:green')
+
+plt.title('GameStop Stock Price vs Revenue')
+plt.show()
