@@ -1,0 +1,33 @@
+# Data Science Final Project
+# Introduction
+In this notebook, we will explore various data science concepts and perform some basic arithmetic and conversion exercises.
+## Data Science Languages
+- Python
+- R
+- SQL
+- Julia
+## Data Science Tools
+
+| Tool       | Type          |
+|------------|---------------|
+| Jupyter    | IDE           |
+| TensorFlow | Machine Learning Framework |
+| GitHub     | Version Control|
+| VS Code    | Code Editor   |
+## Arithmetic Expressions
+Below are some examples of basic arithmetic expressions in Python:
+# Multiplication and Addition
+a = 5
+b = 10
+result = a * b + 2
+result
+# Convert minutes to hours
+minutes = 180
+hours = minutes / 60
+hours
+## Objectives
+- Perform basic arithmetic operations
+- Convert units (minutes to hours)
+- Learn data science concepts
+## Author
+Name: Tanishq
